@@ -50,8 +50,6 @@ The project utilizes several tools to maximize efficiency and maintain quality t
 - **Version Control**: Git is used for version control, following a branching strategy that includes separate branches for features, bug fixes, and releases.
 - **Code Quality**: ESLint and Prettier are employed for ensuring code consistency and readability across the entire project.
 - **Testing**: Jest and Mocha are used for unit and integration tests, while Cypress handles end-to-end testing. The TDD approach ensures all components are thoroughly tested during the development process.
-- **CI/CD Pipeline**: GitHub Actions are used to automate testing and deployment. The pipeline ensures that new changes are verified through automated tests and then deployed to staging or production environments seamlessly.
-- **Deployment**: Vercel is used for frontend deployment, and the backend is hosted using Heroku or directly through Supabase's serverless functions. Environment configurations are managed through environment variables.
 
 ## Technical Stack
 
@@ -210,12 +208,6 @@ To ensure the Space Invaders web application is developed with high quality, the
 - **Scalability**: Structure the database to accommodate future growth, such as adding new game features or new types of user data, without requiring major restructuring. Consider using Supabase's real-time capabilities to handle scaling needs dynamically.
 - **Testing**: Create unit and integration tests for database interactions, including handling of edge cases like duplicate records or failed transactions. Use a test database to isolate the testing environment from production data.
 
-### Deployment and CI/CD
-
-- **Continuous Integration/Continuous Deployment (CI/CD)**: Set up a CI/CD pipeline using tools like GitHub Actions to automate testing and deployment. Each new commit should trigger automated tests, and successful builds can be deployed to staging or production environments.
-- **Environment Management**: Maintain separate environments for development, staging, and production, each with distinct configurations. Use environment variables to manage secrets like API keys without hardcoding them.
-- **Monitoring and Logging**: Implement server-side logging (using tools like Winston) and set up monitoring for key performance indicators (KPIs). Use tools like LogRocket for frontend error tracking and performance monitoring.
-
 ## Development Flow
 
 The development process for the Space Invaders web application is divided into iterative sprints. Each sprint is designed to incrementally deliver functionality, refine features, and enhance code quality based on previous deliverables and feedback.
@@ -223,12 +215,14 @@ The development process for the Space Invaders web application is divided into i
 ### Roles and Responsibilities
 
 - **Product Owner**:
+
   - Responsible for defining the overall vision of the project and making final decisions on feature prioritization.
   - Consulted during sprint planning to determine which functionalities should be delivered next, based on `project_spec.md`.
   - Provides clarity on requirements and answers questions from developers regarding functionalities.
   - Performs final acceptance testing of deliverables, after developers have conducted unit tests and peer reviews.
 
 - **Developer**:
+
   - Responsible for implementing features using a Test-Driven Development (TDD) approach.
   - Creates detailed suggestions for sprint goals and specific tasks during sprint planning, which are reviewed and finalized by the Product Owner.
   - Ensures that tasks are developed, tested, and meet the acceptance criteria before merging them into the main branch.
@@ -247,8 +241,8 @@ Each sprint consists of the following stages:
 1. **Planning**
 
    - At the beginning of each sprint, a planning session is conducted to define the sprint goal, based on previous sprints' deliverables and the overall project specification.
-   - A list of tasks is created, each with a detailed description. Tasks are derived from the sprint goal and are broken down to ensure that they are manageable and testable.
-   - The Product Owner is consulted during planning to determine what functionality should be delivered next. The Developer suggests specific features, but the final decision on what lands into the sprint goal and tasks is made by the Product Owner.
+   - Sprint goals should be granular, focusing on delivering specific, well-defined features. The project should be divided into 5-10 sprints, ensuring manageable development cycles.
+   - A list of tasks is created, each with a detailed description. Tasks must be very granular, typically resulting in 10-20 tasks per sprint. Avoid broad tasks like "Frontend Setup"; instead, break down tasks into smaller, actionable items to maintain focus and accountability.
    - **Documentation**: The planning session results are recorded in `planning.md`, which includes the sprint goal and a task list. The `tasks.md` file is also created during the planning stage, detailing each task's requirements, acceptance criteria, and expectations.
 
 2. **Development**
@@ -258,6 +252,23 @@ Each sprint consists of the following stages:
    - **Documentation**: During development, the `tasks.md` file is updated with the results of each task, including progress status and any adjustments made during the process.
 
 3. **Sprint Summary**
+
+   - At the end of each sprint, a `sprint_summary.md` is created. This summary includes the completed tasks, any blockers or challenges encountered, and an evaluation of the sprint.
+   - The sprint summary also highlights key achievements and sets recommendations for the subsequent sprint.
+
+4. **Planning**
+
+   - At the beginning of each sprint, a planning session is conducted to define the sprint goal, based on previous sprints' deliverables and the overall project specification.
+   - A list of tasks is created, each with a detailed description. Tasks are derived from the sprint goal and are broken down to ensure that they are manageable and testable.
+   - **Documentation**: The planning session results are recorded in `planning.md`, which includes the sprint goal and a task list. The `tasks.md` file is also created during the planning stage, detailing each task's requirements, acceptance criteria, and expectations.
+
+5. **Development**
+
+   - Each task is developed separately using a Test-Driven Development (TDD) approach. This ensures robust and thoroughly tested code for each functionality.
+   - Each task has well-defined acceptance criteria and associated tests to verify its completion.
+   - **Documentation**: During development, the `tasks.md` file is updated with the results of each task, including progress status and any adjustments made during the process.
+
+6. **Sprint Summary**
 
    - At the end of each sprint, a `sprint_summary.md` is created. This summary includes the completed tasks, any blockers or challenges encountered, and an evaluation of the sprint.
    - The sprint summary also highlights key achievements and sets recommendations for the subsequent sprint.
@@ -269,63 +280,6 @@ Each sprint consists of the following stages:
   - **`planning.md`**: Outlines the sprint goal and planned tasks.
   - **`tasks.md`**: Describes each task, including acceptance criteria, status, and task results.
   - **`sprint_summary.md`**: Summarizes the achievements and challenges of the sprint.
-
-### Git Workflow
-
-- For each task, a new branch should be created, named appropriately to reflect the task being worked on (e.g., `feature/game-mechanics` or `bugfix/login-issue`).
-- Once the task is completed, thoroughly tested, and meets the acceptance criteria, the branch should be merged into the main branch&#x20;
-- Code reviews should be conducted on each PR to maintain high code quality and ensure adherence to project standards.
-- The main branch should always contain production-ready code, and no incomplete features should be merged until they are fully tested and reviewed.
-
-### Sprint Structure
-
-Each sprint consists of the following stages:
-
-1. **Planning**
-
-   - At the beginning of each sprint, a planning session is conducted to define the sprint goal, based on previous sprints' deliverables and the overall project specification.
-   - A list of tasks is created, each with a detailed description. Tasks are derived from the sprint goal and are broken down to ensure that they are manageable and testable.
-   - **Documentation**: The planning session results are recorded in `planning.md`, which includes the sprint goal and a task list. The `tasks.md` file is also created during the planning stage, detailing each task's requirements, acceptance criteria, and expectations.
-
-2. **Development**
-
-   - Each task is developed separately using a Test-Driven Development (TDD) approach. This ensures robust and thoroughly tested code for each functionality.
-   - Each task has well-defined acceptance criteria and associated tests to verify its completion.
-   - **Documentation**: During development, the `tasks.md` file is updated with the results of each task, including progress status and any adjustments made during the process.
-
-3. **Sprint Summary**
-
-   - At the end of each sprint, a `sprint_summary.md` is created. This summary includes the completed tasks, any blockers or challenges encountered, and an evaluation of the sprint.
-   - The sprint summary also highlights key achievements and sets recommendations for the subsequent sprint.
-
-### Repository Structure for Sprint Documentation
-
-- All sprint-related documents are stored in the main repository under the `sprints` folder.
-- Each sprint has its own subfolder containing three files:
-  - **`planning.md`**: Outlines the sprint goal and planned tasks.
-  - **`tasks.md`**: Describes each task, including acceptance criteria, status, and task results.
-  - **`sprint_summary.md`**: Summarizes the achievements and challenges of the sprint.
-
-### Sprint Structure
-
-Each sprint consists of the following stages:
-
-1. **Planning**
-
-   - At the beginning of each sprint, a planning session is conducted to define the sprint goal, based on previous sprints' deliverables and the overall project specification.
-   - A list of tasks is created, each with a detailed description. Tasks are derived from the sprint goal and are broken down to ensure that they are manageable and testable.
-   - **Documentation**: The planning session results are recorded in `planning.md`, which includes the sprint goal and a task list. The `tasks.md` file is also created during the planning stage, detailing each task's requirements, acceptance criteria, and expectations.
-
-2. **Development**
-
-   - Each task is developed separately using a Test-Driven Development (TDD) approach. This ensures robust and thoroughly tested code for each functionality.
-   - Each task has well-defined acceptance criteria and associated tests to verify its completion.
-   - **Documentation**: During development, the `tasks.md` file is updated with the results of each task, including progress status and any adjustments made during the process.
-
-3. **Sprint Summary**
-
-   - At the end of each sprint, a `sprint_summary.md` is created. This summary includes the completed tasks, any blockers or challenges encountered, and an evaluation of the sprint.
-   - The sprint summary also highlights key achievements and sets recommendations for the subsequent sprint.
 
 ### Repository Structure for Sprint Documentation
 
@@ -368,14 +322,13 @@ Each sprint consists of the following stages:
 ## Additional Notes
 
 - **Version Control**: Use Git for version control, with a well-defined branching strategy for features, bug fixes, and releases.
-- **Deployment**: Deploy the frontend using a platform like Vercel and the backend using Heroku or Supabase's hosting capabilities.
+- **Testing**: Implement both unit testing and end-to-end testing using tools like Jest and Cypress to ensure stability and reliability.
 - **Testing**: Implement both unit testing and end-to-end testing using tools like Jest and Cypress to ensure stability and reliability.
 
 ## Deliverables
 
 - **Source Code**: Hosted on GitHub or another version control platform.
 - **Documentation**: Include comprehensive setup instructions, code documentation, and a detailed README.
-- **Deployed Web Application**: Provide a working URL to access the game online.
 
 ---
 
