@@ -17,14 +17,18 @@ This project aims to develop a sophisticated web-based reimplementation of the c
 ## High-Level Architecture
 
 ### Project Structure
+
 The project is organized in a way that ensures clarity, ease of development, and scalability. The primary components are as follows:
+
 - **Frontend**: A web-based client developed using TypeScript, HTML, and CSS. The game rendering is managed using the Canvas API, which enables complex graphics and animations.
+
   - **Directory Structure**: The frontend is organized into components, services, and utility folders.
     - **Components**: Reusable UI elements such as game screens, scoreboards, and user forms.
     - **Services**: Functions that handle interactions with backend APIs (e.g., submitting scores, authentication).
     - **Utilities**: Helper functions and constants to ensure code reusability and reduce redundancy.
 
 - **Backend**: A Node.js application developed using Express.js for managing game data, user authentication, and leaderboard features.
+
   - **Directory Structure**: The backend is organized into routes, controllers, services, and models.
     - **Routes**: Define all API endpoints, segregating user management, game management, and leaderboard functionalities.
     - **Controllers**: Contain the logic for handling requests and preparing responses, ensuring separation of concerns.
@@ -32,6 +36,7 @@ The project is organized in a way that ensures clarity, ease of development, and
     - **Models**: Define data schemas and interactions with the Supabase database.
 
 - **Database**: Supabase is used to manage the PostgreSQL database. The schema is normalized for data integrity and is designed to handle growth in user and game data.
+
   - **Tables**: Users, Scores, and GameSessions tables ensure all relevant game and user data are appropriately tracked and accessible.
 
 - **Real-Time Features**: Supabase's real-time capabilities are leveraged for dynamic leaderboard updates, which allows all players to see the latest scores without refreshing their game.
@@ -39,7 +44,9 @@ The project is organized in a way that ensures clarity, ease of development, and
 - **Local Storage**: Utilized for guest users to save their progress, UUIDs, and scores locally. This ensures a seamless experience for players who prefer not to create an account.
 
 ### Development Tools
+
 The project utilizes several tools to maximize efficiency and maintain quality throughout the development cycle:
+
 - **Version Control**: Git is used for version control, following a branching strategy that includes separate branches for features, bug fixes, and releases.
 - **Code Quality**: ESLint and Prettier are employed for ensuring code consistency and readability across the entire project.
 - **Testing**: Jest and Mocha are used for unit and integration tests, while Cypress handles end-to-end testing. The TDD approach ensures all components are thoroughly tested during the development process.
@@ -83,7 +90,9 @@ The project utilizes several tools to maximize efficiency and maintain quality t
 - **Test-Driven Development (TDD)**: The application must be developed using a TDD approach, ensuring all features are thoroughly tested before implementation. This will improve code quality, reliability, and maintainability.
 
 - **Responsiveness**: Ensure that the game is fully responsive and playable on both desktop and tablet devices.
+
 - **Real-time Updates**: Utilize Supabase's real-time functionalities to dynamically update the leaderboard.
+
 - **Security**: Protect all API endpoints with JWT tokens to secure score submissions and user data.
 
 ## API Specifications
@@ -91,6 +100,7 @@ The project utilizes several tools to maximize efficiency and maintain quality t
 ### Endpoints
 
 1. **User Management**
+
    - `POST /api/auth/signup`
      - Description: Registers a new user.
      - Request Body: `{ "email": string, "password": string }`
@@ -101,6 +111,7 @@ The project utilizes several tools to maximize efficiency and maintain quality t
      - Description: Logs out a user.
 
 2. **Leaderboard Management**
+
    - `GET /api/leaderboard`
      - Description: Retrieves the top scores from the global leaderboard.
      - Response: `{ "leaderboard": [ { "username": string, "score": number, "status": "verified" | "unverified" } ] }`
@@ -109,6 +120,7 @@ The project utilizes several tools to maximize efficiency and maintain quality t
      - Request Body: `{ "userId": string, "username": string, "score": number }`
 
 3. **Game Management**
+
    - `POST /api/game/start`
      - Description: Initiates a new game session for a user.
      - Request Body: `{ "userId": string, "username": string }`
@@ -123,6 +135,7 @@ The project utilizes several tools to maximize efficiency and maintain quality t
 ### Tables
 
 1. **Users**
+
    - `uuid`: Primary key, universally unique identifier for all users.
    - `username`: User's name or email (unique).
    - `email`: User email, optional for guest users.
@@ -131,6 +144,7 @@ The project utilizes several tools to maximize efficiency and maintain quality t
    - `created_at`: Timestamp.
 
 2. **Scores**
+
    - `id`: Primary key.
    - `game_session_id`: Foreign key referencing `GameSessions`.
    - `user_id`: Foreign key referencing `Users`.
@@ -138,11 +152,11 @@ The project utilizes several tools to maximize efficiency and maintain quality t
    - `created_at`: Timestamp.
 
 3. **GameSessions**
+
    - `id`: Primary key.
    - `user_id`: Foreign key referencing `Users`.
    - `start_time`: Timestamp indicating when the game session began.
    - `end_time`: Timestamp indicating when the game session ended.
-   
 
 ## Frontend Requirements
 
@@ -170,50 +184,178 @@ The project utilizes several tools to maximize efficiency and maintain quality t
 To ensure the Space Invaders web application is developed with high quality, the following best practices should be applied across all areas of development. These practices focus on scalability, maintainability, and maximizing the efficiency of each development phase.
 
 ### General Best Practices
+
 - **Test-Driven Development (TDD)**: Follow TDD principles across all areas of development. This ensures that tests are written before the code itself, leading to higher code quality, early detection of issues, and a well-defined scope for each feature.
 - **Code Consistency**: Utilize linters (e.g., ESLint for JavaScript/TypeScript) and formatting tools (e.g., Prettier) to ensure a consistent code style throughout the project.
 - **Documentation**: Maintain clear documentation for both code and API specifications. This includes comments in the codebase, API documentation, and README files for setting up and running the application.
 
 ### Backend Development
+
 - **Modular Architecture**: Structure the backend using a modular approach, separating concerns such as routing, business logic, and data access. This improves maintainability and makes it easier to add or modify features.
 - **API Design**: Develop RESTful APIs that follow standard conventions for URL structure, request methods, and response codes. Document all endpoints clearly for ease of integration with the frontend.
 - **Security**: Implement JWT-based authentication to protect user data. Validate all incoming data to prevent SQL injection and other common attacks.
 - **Testing**: Use Jest or Mocha for unit and integration tests, ensuring each component is thoroughly tested for different scenarios, including edge cases. Mock external dependencies where applicable to isolate the functionality being tested.
 
 ### Frontend Development
+
 - **Component-Based Design**: Develop reusable UI components with clear separation of concerns, enabling consistent behavior and styling across the application. Follow the principles of Atomic Design to break down the interface into small, manageable parts.
 - **Type Safety**: Use TypeScript for all frontend development to leverage strong typing. This enhances readability and makes the codebase more resilient to refactoring by catching type errors during development.
 - **Accessibility**: Ensure the user interface is accessible to all users, including those with disabilities. Follow WCAG (Web Content Accessibility Guidelines) standards for elements such as forms, buttons, and dynamic content.
 - **Testing**: Implement unit tests for each component using Jest and React Testing Library. Use Cypress for end-to-end testing to verify user workflows, ensuring the entire interface behaves as expected.
 
 ### Database Development
+
 - **Normalization and Optimization**: Design a normalized database schema to eliminate redundancy, while also optimizing queries for performance. Use indexing where necessary to speed up frequent queries such as leaderboard lookups.
 - **Data Integrity**: Enforce data integrity using foreign keys and constraints. Implement validation both in the backend and in the database to prevent invalid data from being stored.
 - **Scalability**: Structure the database to accommodate future growth, such as adding new game features or new types of user data, without requiring major restructuring. Consider using Supabase's real-time capabilities to handle scaling needs dynamically.
 - **Testing**: Create unit and integration tests for database interactions, including handling of edge cases like duplicate records or failed transactions. Use a test database to isolate the testing environment from production data.
 
 ### Deployment and CI/CD
+
 - **Continuous Integration/Continuous Deployment (CI/CD)**: Set up a CI/CD pipeline using tools like GitHub Actions to automate testing and deployment. Each new commit should trigger automated tests, and successful builds can be deployed to staging or production environments.
 - **Environment Management**: Maintain separate environments for development, staging, and production, each with distinct configurations. Use environment variables to manage secrets like API keys without hardcoding them.
 - **Monitoring and Logging**: Implement server-side logging (using tools like Winston) and set up monitoring for key performance indicators (KPIs). Use tools like LogRocket for frontend error tracking and performance monitoring.
+
+## Development Flow
+
+The development process for the Space Invaders web application is divided into iterative sprints. Each sprint is designed to incrementally deliver functionality, refine features, and enhance code quality based on previous deliverables and feedback.
+
+### Roles and Responsibilities
+
+- **Product Owner**:
+  - Responsible for defining the overall vision of the project and making final decisions on feature prioritization.
+  - Consulted during sprint planning to determine which functionalities should be delivered next, based on `project_spec.md`.
+  - Provides clarity on requirements and answers questions from developers regarding functionalities.
+  - Performs final acceptance testing of deliverables, after developers have conducted unit tests and peer reviews.
+
+- **Developer**:
+  - Responsible for implementing features using a Test-Driven Development (TDD) approach.
+  - Creates detailed suggestions for sprint goals and specific tasks during sprint planning, which are reviewed and finalized by the Product Owner.
+  - Ensures that tasks are developed, tested, and meet the acceptance criteria before merging them into the main branch.
+
+### Git Workflow
+
+- For each task, a new branch should be created, named appropriately to reflect the task being worked on (e.g., `feature/game-mechanics` or `bugfix/login-issue`).
+- Once the task is completed, thoroughly tested, and meets the acceptance criteria, the branch should be merged into the main branch through a pull request (PR).
+- Code reviews should be conducted on each PR to maintain high code quality and ensure adherence to project standards.
+- The main branch should always contain production-ready code, and no incomplete features should be merged until they are fully tested and reviewed.
+
+### Sprint Structure
+
+Each sprint consists of the following stages:
+
+1. **Planning**
+
+   - At the beginning of each sprint, a planning session is conducted to define the sprint goal, based on previous sprints' deliverables and the overall project specification.
+   - A list of tasks is created, each with a detailed description. Tasks are derived from the sprint goal and are broken down to ensure that they are manageable and testable.
+   - The Product Owner is consulted during planning to determine what functionality should be delivered next. The Developer suggests specific features, but the final decision on what lands into the sprint goal and tasks is made by the Product Owner.
+   - **Documentation**: The planning session results are recorded in `planning.md`, which includes the sprint goal and a task list. The `tasks.md` file is also created during the planning stage, detailing each task's requirements, acceptance criteria, and expectations.
+
+2. **Development**
+
+   - Each task is developed separately using a Test-Driven Development (TDD) approach. This ensures robust and thoroughly tested code for each functionality.
+   - Each task has well-defined acceptance criteria and associated tests to verify its completion.
+   - **Documentation**: During development, the `tasks.md` file is updated with the results of each task, including progress status and any adjustments made during the process.
+
+3. **Sprint Summary**
+
+   - At the end of each sprint, a `sprint_summary.md` is created. This summary includes the completed tasks, any blockers or challenges encountered, and an evaluation of the sprint.
+   - The sprint summary also highlights key achievements and sets recommendations for the subsequent sprint.
+
+### Repository Structure for Sprint Documentation
+
+- All sprint-related documents are stored in the main repository under the `sprints` folder.
+- Each sprint has its own subfolder containing three files:
+  - **`planning.md`**: Outlines the sprint goal and planned tasks.
+  - **`tasks.md`**: Describes each task, including acceptance criteria, status, and task results.
+  - **`sprint_summary.md`**: Summarizes the achievements and challenges of the sprint.
+
+### Git Workflow
+
+- For each task, a new branch should be created, named appropriately to reflect the task being worked on (e.g., `feature/game-mechanics` or `bugfix/login-issue`).
+- Once the task is completed, thoroughly tested, and meets the acceptance criteria, the branch should be merged into the main branch&#x20;
+- Code reviews should be conducted on each PR to maintain high code quality and ensure adherence to project standards.
+- The main branch should always contain production-ready code, and no incomplete features should be merged until they are fully tested and reviewed.
+
+### Sprint Structure
+
+Each sprint consists of the following stages:
+
+1. **Planning**
+
+   - At the beginning of each sprint, a planning session is conducted to define the sprint goal, based on previous sprints' deliverables and the overall project specification.
+   - A list of tasks is created, each with a detailed description. Tasks are derived from the sprint goal and are broken down to ensure that they are manageable and testable.
+   - **Documentation**: The planning session results are recorded in `planning.md`, which includes the sprint goal and a task list. The `tasks.md` file is also created during the planning stage, detailing each task's requirements, acceptance criteria, and expectations.
+
+2. **Development**
+
+   - Each task is developed separately using a Test-Driven Development (TDD) approach. This ensures robust and thoroughly tested code for each functionality.
+   - Each task has well-defined acceptance criteria and associated tests to verify its completion.
+   - **Documentation**: During development, the `tasks.md` file is updated with the results of each task, including progress status and any adjustments made during the process.
+
+3. **Sprint Summary**
+
+   - At the end of each sprint, a `sprint_summary.md` is created. This summary includes the completed tasks, any blockers or challenges encountered, and an evaluation of the sprint.
+   - The sprint summary also highlights key achievements and sets recommendations for the subsequent sprint.
+
+### Repository Structure for Sprint Documentation
+
+- All sprint-related documents are stored in the main repository under the `sprints` folder.
+- Each sprint has its own subfolder containing three files:
+  - **`planning.md`**: Outlines the sprint goal and planned tasks.
+  - **`tasks.md`**: Describes each task, including acceptance criteria, status, and task results.
+  - **`sprint_summary.md`**: Summarizes the achievements and challenges of the sprint.
+
+### Sprint Structure
+
+Each sprint consists of the following stages:
+
+1. **Planning**
+
+   - At the beginning of each sprint, a planning session is conducted to define the sprint goal, based on previous sprints' deliverables and the overall project specification.
+   - A list of tasks is created, each with a detailed description. Tasks are derived from the sprint goal and are broken down to ensure that they are manageable and testable.
+   - **Documentation**: The planning session results are recorded in `planning.md`, which includes the sprint goal and a task list. The `tasks.md` file is also created during the planning stage, detailing each task's requirements, acceptance criteria, and expectations.
+
+2. **Development**
+
+   - Each task is developed separately using a Test-Driven Development (TDD) approach. This ensures robust and thoroughly tested code for each functionality.
+   - Each task has well-defined acceptance criteria and associated tests to verify its completion.
+   - **Documentation**: During development, the `tasks.md` file is updated with the results of each task, including progress status and any adjustments made during the process.
+
+3. **Sprint Summary**
+
+   - At the end of each sprint, a `sprint_summary.md` is created. This summary includes the completed tasks, any blockers or challenges encountered, and an evaluation of the sprint.
+   - The sprint summary also highlights key achievements and sets recommendations for the subsequent sprint.
+
+### Repository Structure for Sprint Documentation
+
+- All sprint-related documents are stored in the main repository under the `sprints` folder.
+- Each sprint has its own subfolder containing three files:
+  - **`planning.md`**: Outlines the sprint goal and planned tasks.
+  - **`tasks.md`**: Describes each task, including acceptance criteria, status, and task results.
+  - **`sprint_summary.md`**: Summarizes the achievements and challenges of the sprint.
 
 ## Development Plan
 
 ### Milestones
 
 1. **Frontend Game Logic**
+
    - Develop the game interface using HTML Canvas, using Test-Driven Development (TDD) to ensure robust functionality.
    - Implement player movement, shooting mechanics, and enemy behaviors with unit tests for each feature.
 
 2. **Backend API**
+
    - Set up a Node.js server with Express.js, using TDD to verify the correctness of APIs.
    - Implement user authentication and leaderboard management APIs, ensuring comprehensive test coverage.
 
 3. **Supabase Integration**
+
    - Integrate backend with Supabase for authentication and database operations, with tests for each integration point.
    - Utilize Supabase's real-time functionalities for dynamic leaderboard updates, tested in various scenarios to ensure reliability.
 
 4. **Frontend Integration**
+
    - Connect the frontend to backend APIs for user management and leaderboard functionalities, using TDD to validate integration.
    - Develop a user-friendly interface for login, sign-up, and leaderboard interactions, ensuring UI components are tested for functionality.
 
