@@ -243,35 +243,86 @@ Each sprint consists of the following stages:
    - At the beginning of each sprint, a planning session is conducted to define the sprint goal, based on previous sprints' deliverables and the overall project specification.
    - Sprint goals should be granular, focusing on delivering specific, well-defined features. The project should be divided into 5-10 sprints, ensuring manageable development cycles.
    - A list of tasks is created, each with a detailed description. Tasks must be very granular, typically resulting in 10-20 tasks per sprint. Avoid broad tasks like "Frontend Setup"; instead, break down tasks into smaller, actionable items to maintain focus and accountability.
+   - The Product Owner is involved in planning, and planning does not end until they agree with the sprint goals and list of tasks.
    - **Documentation**: The planning session results are recorded in `planning.md`, which includes the sprint goal and a task list. The `tasks.md` file is also created during the planning stage, detailing each task's requirements, acceptance criteria, and expectations.
 
 2. **Development**
 
    - Each task is developed separately using a Test-Driven Development (TDD) approach. This ensures robust and thoroughly tested code for each functionality.
-   - Each task has well-defined acceptance criteria and associated tests to verify its completion.
+   - The Developer must always test the functionality to ensure it works every time before considering the task done.
+   - Once a task is considered done, the Developer should update the `tasks.md` file, marking the task as "In Review" so Product Owner can check it.
    - **Documentation**: During development, the `tasks.md` file is updated with the results of each task, including progress status and any adjustments made during the process.
 
-3. **Sprint Summary**
+3. **Sprint Review**
+
+   - After the development stage, a sprint review is conducted where the Product Owner decides if the tasks are done and meet the acceptance criteria.
+   - The Product Owner also conducts testing to verify that each feature works as expected and aligns with the project goals. Best practices include thorough manual testing, checking edge cases, and ensuring usability from the end-user's perspective.
+   - The Developer is responsible for guiding the Product Owner through the testing process, providing instructions and clarifications as needed.
+
+4. **Sprint Summary**
 
    - At the end of each sprint, a `sprint_summary.md` is created. This summary includes the completed tasks, any blockers or challenges encountered, and an evaluation of the sprint.
    - The sprint summary also highlights key achievements and sets recommendations for the subsequent sprint.
 
-4. **Planning**
+5. **Planning**
 
    - At the beginning of each sprint, a planning session is conducted to define the sprint goal, based on previous sprints' deliverables and the overall project specification.
-   - A list of tasks is created, each with a detailed description. Tasks are derived from the sprint goal and are broken down to ensure that they are manageable and testable.
+   - Sprint goals should be granular, focusing on delivering specific, well-defined features. The project should be divided into 5-10 sprints, ensuring manageable development cycles.
+   - A list of tasks is created, each with a detailed description. Tasks must be very granular, typically resulting in 10-20 tasks per sprint. Avoid broad tasks like "Frontend Setup"; instead, break down tasks into smaller, actionable items to maintain focus and accountability.
+   - The Product Owner is involved in planning, and planning does not end until they agree with the sprint goals and list of tasks.
    - **Documentation**: The planning session results are recorded in `planning.md`, which includes the sprint goal and a task list. The `tasks.md` file is also created during the planning stage, detailing each task's requirements, acceptance criteria, and expectations.
 
-5. **Development**
+6. **Development**
 
    - Each task is developed separately using a Test-Driven Development (TDD) approach. This ensures robust and thoroughly tested code for each functionality.
    - Each task has well-defined acceptance criteria and associated tests to verify its completion.
    - **Documentation**: During development, the `tasks.md` file is updated with the results of each task, including progress status and any adjustments made during the process.
 
-6. **Sprint Summary**
+7. **Sprint Review**
+
+   - After the development stage, a sprint review is conducted where the Product Owner decides if the tasks are done and meet the acceptance criteria.
+   - The Product Owner also conducts testing to verify that each feature works as expected and aligns with the project goals. Best practices include thorough manual testing, checking edge cases, and ensuring usability from the end-user's perspective.
+   - The Developer is responsible for guiding the Product Owner through the testing process, providing instructions and clarifications as needed. Best practices include thorough manual testing, checking edge cases, and ensuring usability from the end-user's perspective.
+
+8. **Sprint Summary**
 
    - At the end of each sprint, a `sprint_summary.md` is created. This summary includes the completed tasks, any blockers or challenges encountered, and an evaluation of the sprint.
    - The sprint summary also highlights key achievements and sets recommendations for the subsequent sprint.
+
+9. **Planning**
+
+   - At the beginning of each sprint, a planning session is conducted to define the sprint goal, based on previous sprints' deliverables and the overall project specification.
+   - Sprint goals should be granular, focusing on delivering specific, well-defined features. The project should be divided into 5-10 sprints, ensuring manageable development cycles.
+   - A list of tasks is created, each with a detailed description. Tasks must be very granular, typically resulting in 10-20 tasks per sprint. Avoid broad tasks like "Frontend Setup"; instead, break down tasks into smaller, actionable items to maintain focus and accountability.
+   - **Documentation**: The planning session results are recorded in `planning.md`, which includes the sprint goal and a task list. The `tasks.md` file is also created during the planning stage, detailing each task's requirements, acceptance criteria, and expectations.
+
+10. **Development**
+
+    - Each task is developed separately using a Test-Driven Development (TDD) approach. This ensures robust and thoroughly tested code for each functionality.
+    - Each task has well-defined acceptance criteria and associated tests to verify its completion.
+    - **Documentation**: During development, the `tasks.md` file is updated with the results of each task, including progress status and any adjustments made during the process.
+
+11. **Sprint Summary**
+
+    - At the end of each sprint, a `sprint_summary.md` is created. This summary includes the completed tasks, any blockers or challenges encountered, and an evaluation of the sprint.
+    - The sprint summary also highlights key achievements and sets recommendations for the subsequent sprint.
+
+12. **Planning**
+
+    - At the beginning of each sprint, a planning session is conducted to define the sprint goal, based on previous sprints' deliverables and the overall project specification.
+    - A list of tasks is created, each with a detailed description. Tasks are derived from the sprint goal and are broken down to ensure that they are manageable and testable.
+    - **Documentation**: The planning session results are recorded in `planning.md`, which includes the sprint goal and a task list. The `tasks.md` file is also created during the planning stage, detailing each task's requirements, acceptance criteria, and expectations.
+
+13. **Development**
+
+    - Each task is developed separately using a Test-Driven Development (TDD) approach. This ensures robust and thoroughly tested code for each functionality.
+    - Each task has well-defined acceptance criteria and associated tests to verify its completion.
+    - **Documentation**: During development, the `tasks.md` file is updated with the results of each task, including progress status and any adjustments made during the process.
+
+14. **Sprint Summary**
+
+    - At the end of each sprint, a `sprint_summary.md` is created. This summary includes the completed tasks, any blockers or challenges encountered, and an evaluation of the sprint.
+    - The sprint summary also highlights key achievements and sets recommendations for the subsequent sprint.
 
 ### Repository Structure for Sprint Documentation
 
